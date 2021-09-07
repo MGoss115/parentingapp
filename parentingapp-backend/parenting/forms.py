@@ -1,5 +1,5 @@
 from django import forms
-from .models import Kid, Todo
+from .models import Kid
 
 
 class KidForm(forms.ModelForm):

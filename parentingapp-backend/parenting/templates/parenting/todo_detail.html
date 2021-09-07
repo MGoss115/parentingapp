@@ -1,0 +1,14 @@
+
+
+
+<h3>Todo's</h3>
+<ul>
+    {% for todo in kid.todos.all %}
+    <li>
+        <h2>{{ todo.kid }}</h2>
+        <h2>{{ todo.chores }}</h2>
+        <h2>{{ todo.homework }}</h2>
+        <h2>{{ todo.recreational }}</h2>
+    </li>
+    {% endfor %}
+</ul>

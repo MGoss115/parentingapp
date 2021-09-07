@@ -7,8 +7,11 @@ name = "pypi"
 django = "*"
 psycopg2-binary = "*"
 pillow = "*"
+djangorestframework = "*"
+django-rest-knox = "*"
 
 [dev-packages]
+autopep8 = "*"
 
 [requires]
 python_version = "3.9"

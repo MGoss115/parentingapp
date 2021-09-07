@@ -1,0 +1,11 @@
+<h1>Todo's List!</h1>
+
+<ul>
+    {% for todo in todos %}
+    <li>
+        <h2>{{ todo.chores }}</h2>
+        <h2>{{ todo.homework }}</h2>
+        <h2>{{ todo.recreational }}</h2>
+    </li>
+    {% endfor %}
+</ul>

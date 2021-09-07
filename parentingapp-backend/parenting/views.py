@@ -1,27 +1,54 @@
+from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from rest_framework import generics, permissions, viewsets
 from .models import Kid, Todo
 from .forms import KidForm
+from .serializers import TodoSerializer, KidSerializer
 
 
 
 # Create your views here.
-def kid_form(request):
-    if request.method == "POST":
-        form = KidForm(data=request.POST, files=request.FILES)
-        if form.is_valid():
-            form.save()
-            obj = form.instance
-            return render(request, "parenting/kid_form.html", {"obj": obj})
-    else:
-        form = KidForm()
-    img = Kid.objects.all()
 
-    return render(request, "parenting/kid_form.html", {"img": img, "form": form})
+class KidList(generics.ListCreateAPIView):
+    queryset = Kid.objects.all()
+    serializer_class = KidSerializer
+    permission_classes = [permissions.AllowAny]
+
+class TodoList(generics.ListCreateAPIView):
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer
+    permission_classes = [permissions.AllowAny]
+
+class TodoDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer  
+    permission_classes = [permissions.AllowAny]
 
 
-def todo_list(request):
-    todo = Todo.objects.all()
-    return render(request, 'nostaldja/fad_list.html', {'fads': fads})
+class KidDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Kid.objects.all()
+    serializer_class = KidSerializer
+    permission_classes = [permissions.AllowAny]
+
+
+
+
+# def kid_form(request):
+#     if request.method == "POST":
+#         form = KidForm(data=request.POST, files=request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             obj = form.instance
+#             return render(request, "parenting/kid_form.html", {"obj": obj})
+#     else:
+#         form = TodoForm()
+#     img = Todo.objects.all()
+
+#     return render(request, "parenting/kid_form.html", {"img": img, "form": form})
+
+
+
 
  
 

@@ -20,5 +20,5 @@ class Todo(models.Model):
     recreational = models.CharField(max_length=1000)
 
     def __str__(self):
-        return self.kid.name 
+        return self.kid.name
     
