@@ -13,6 +13,7 @@ function NavBarMenu() {
               <Nav className="me-auto">
                 <NavLink className="show-kids-nav" to="/">Kids</NavLink>
                 <NavLink className="add-kid-nav" to="/addkid">Add Kid</NavLink>
+                <NavLink className="add-kid-nav" to="/:id">Kid Detail</NavLink>
               </Nav>
             </Navbar.Collapse>
           </Container>

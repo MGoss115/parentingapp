@@ -19,7 +19,11 @@ class TodoSerializer(serializers.HyperlinkedModelSerializer):
         view_name='kid_detail',
         read_only=True
     )
+    kid_id = serializers.PrimaryKeyRelatedField(
+        queryset = Kid.objects.all(),
+        source = 'kid'
+    )
 
     class Meta:
         model = Todo
-        fields = ('id', 'kid','chores', 'homework', 'recreational')
+        fields = ('id', 'kid','kid_id','chores', 'homework', 'recreational')

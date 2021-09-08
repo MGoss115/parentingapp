@@ -56,6 +56,7 @@
 .kid-card-info{
   display: flex;
   flex-direction: row;
+  flex-flow: wrap;
   margin: 5px;
   padding: 2px;
 }

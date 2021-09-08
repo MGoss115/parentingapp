@@ -4,10 +4,9 @@ import ShowKids from './Components/ShowKids';
 import AddKid from './Components/AddKid';
 import NavBarMenu from './Components/NavBarMenu';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-// import AddTodo from './Components/AddTodos';
-// import Todo from './Components/Todo'
-// import Kids from './Components/Kids'
 import axios from 'axios'
+import KidDetail from './Components/KidDetail';
+import KidUpdate from './Components/KidUpdate';
 
 
 function App() {
@@ -21,9 +20,10 @@ function App() {
         <Switch>
           <Route exact path="/" component={ShowKids} />
           <Route exact path="/addkid" component={AddKid} />
+          <Route exact path="/:id/" component={KidDetail} />
+          <Route exact path="/:id/update" component={KidUpdate} />
         </Switch>
       </Router>
-    
     </div>
   );
 }
