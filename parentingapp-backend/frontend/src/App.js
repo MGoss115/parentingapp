@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import axios from 'axios'
 import KidDetail from './Components/KidDetail';
 import KidUpdate from './Components/KidUpdate';
+import KidNameUpdate from './Components/KidNameUpdate';
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
           <Route exact path="/" component={ShowKids} />
           <Route exact path="/addkid" component={AddKid} />
           <Route exact path="/:id/" component={KidDetail} />
-          <Route exact path="/:id/update" component={KidUpdate} />
+          <Route exact path="/:id/update" component={KidNameUpdate} />
         </Switch>
       </Router>
     </div>

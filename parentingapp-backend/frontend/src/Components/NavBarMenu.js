@@ -7,13 +7,13 @@ function NavBarMenu() {
       <div>
         <Navbar bg="light" expand="lg">
           <Container>
-            <Navbar.Brand href="#home">Kids</Navbar.Brand>
+            <Navbar.Brand href="#home"></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <NavLink className="show-kids-nav" to="/">Kids</NavLink>
                 <NavLink className="add-kid-nav" to="/addkid">Add Kid</NavLink>
-                <NavLink className="add-kid-nav" to="/:id">Kid Detail</NavLink>
+                {/* <NavLink className="add-kid-nav" to="/:id">Kid Detail</NavLink> */}
               </Nav>
             </Navbar.Collapse>
           </Container>

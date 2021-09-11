@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import KidUpdate from './KidUpdate';
 
-function KidDetail({ }) {
+
+function KidDetail() {
   const [todos, setTodos] = useState([])
   const { id } = useParams()
 
@@ -23,6 +25,7 @@ function KidDetail({ }) {
       <h3>{todos.name}</h3>
       <img src={todos.image} style={{ width: '22rem' }} alt="" />
       <KidUpdate key={todos.id} todos={todos} />
+     
     </div>
   );
 }

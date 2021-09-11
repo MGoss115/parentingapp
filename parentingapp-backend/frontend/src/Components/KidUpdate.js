@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import KidNameUpdate from './KidNameUpdate';
 
 function KidUpdate({ todos }) {
 
@@ -28,6 +30,13 @@ function KidUpdate({ todos }) {
               );
           }
       })}
+                  <Link
+                    className="btn btn-primary m-2"
+                    to={`/${todos.id}/update`}
+                  >
+                    Update
+                  </Link>
+                  <Link className="btn btn-danger m-2">Delete</Link>
     </div>
   );
 }
