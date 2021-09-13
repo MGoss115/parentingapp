@@ -2,12 +2,16 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import KidDetail from './KidDetail';
+import KidUpdate from './KidUpdate';
+
 
 
 function ShowKids() {
 
     const [kid, setKid] = useState([])
+    const history = useHistory()
 
     const getKids = async () => {
         const response = await axios.get('http://localhost:8000/kids/');
@@ -18,6 +22,8 @@ function ShowKids() {
         getKids()
     }, [])
 
+     
+
     return (
       <div className="kid-card-info">
         <h1>Kids</h1>
@@ -27,7 +33,7 @@ function ShowKids() {
             <Card.Body>
               <Card.Title>{kids.name}</Card.Title>
               <Link className="btn btn-primary m-2" to={`/${kids.id}/`}>
-                Task
+                View
               </Link>
             </Card.Body>
           </Card>

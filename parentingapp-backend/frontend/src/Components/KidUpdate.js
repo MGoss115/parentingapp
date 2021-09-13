@@ -1,42 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import KidNameUpdate from './KidNameUpdate';
+import { useHistory, useParams } from 'react-router';
 
-function KidUpdate({ todos }) {
+
+function KidUpdate() {
 
     const [detail, setDetail] = useState([])
+    const { id } = useParams();
+    const history = useHistory()
 
     const getDetails = async () => {
-        const response = await  axios.get('http://localhost:8000/todos/')
-        console.log(response.data)
-        setDetail(response.data)
+        const res = await  axios.get(`http://localhost:8000/kids/${id}`)
+        console.log(res.data)
+        setDetail(res.data)
   }
+    console.log(detail)
 
   useEffect(() => {
     getDetails()
   },[])
+
+  const deleteKid = async (id) => {
+    await axios.delete(`http://localhost:8000/kids/${id}`);
+    history.push("/")
+  }
+
   return (
     <div>
-      <h1>Task</h1>
-      {detail.map(details => {
-          if(todos.id == details.kid_id){
-              return (
-                <div>
-                  <h3>Chores: {details.chores}</h3>
-                  <h3>Homework: {details.homework}</h3>
-                  <h3>After School: {details.recreational}</h3>
-                </div>
-              );
-          }
-      })}
-                  <Link
-                    className="btn btn-primary m-2"
-                    to={`/${todos.id}/update`}
-                  >
-                    Update
-                  </Link>
-                  <Link className="btn btn-danger m-2">Delete</Link>
+      <h1>{detail.name}'s Task</h1>
+      <h4>Chores: {detail.chores}</h4>
+      <h4>Homework: {detail.homework}</h4>
+      <h4>After School Activities: {detail.recreational} </h4>
+      <Link className="btn btn-primary m-2" to={`/${id}/update`}>
+        Update
+      </Link>
+      <Link className="btn btn-danger m-2" onClick={() => deleteKid(detail.id)}>Delete</Link>
     </div>
   );
 }

@@ -2,7 +2,8 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-function AddKid() {
+
+function AddKid( { task }) {
 
     const [name, setName] =useState("")
     const [image, setImage] = useState(null)
