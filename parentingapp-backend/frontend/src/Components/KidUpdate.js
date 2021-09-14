@@ -23,7 +23,7 @@ function KidUpdate() {
 
   const deleteKid = async (id) => {
     await axios.delete(`http://localhost:8000/kids/${id}`);
-    history.push("/")
+    // history.push("/")
   }
 
   return (
@@ -35,7 +35,13 @@ function KidUpdate() {
       <Link className="btn btn-primary m-2" to={`/${id}/update`}>
         Update
       </Link>
-      <Link className="btn btn-danger m-2" onClick={() => deleteKid(detail.id)}>Delete</Link>
+      <Link
+        className="btn btn-danger m-2"
+        onClick={() => deleteKid(detail.id)}
+        to={`/`}
+      >
+        Delete
+      </Link>
     </div>
   );
 }

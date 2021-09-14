@@ -9,6 +9,8 @@ psycopg2-binary = "*"
 pillow = "*"
 djangorestframework = "*"
 django-rest-knox = "*"
+djangorestframework-jwt = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 autopep8 = "*"

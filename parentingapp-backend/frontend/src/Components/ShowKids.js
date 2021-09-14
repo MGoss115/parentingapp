@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import KidDetail from './KidDetail';
 import KidUpdate from './KidUpdate';
+import NavBarMenu from './NavBarMenu';
 
 
 
@@ -24,20 +25,30 @@ function ShowKids() {
 
      
 
+   
     return (
-      <div className="kid-card-info">
-        <h1>Kids</h1>
-        {kid.map((kids, index) => (
-          <Card className="m-2 rounded shadow-lg" style={{ width: '22rem' }}>
-            {kids.image ? <Card.Img variant="top" src={kids.image} /> : null}
-            <Card.Body>
-              <Card.Title>{kids.name}</Card.Title>
-              <Link className="btn btn-primary m-2" to={`/${kids.id}/`}>
-                View
-              </Link>
-            </Card.Body>
-          </Card>
-        ))}
+      <div>
+        <NavBarMenu />
+          <h1>Kids</h1>
+        <section className="kid-card-info">
+          {kid.map((kids, index) => (
+          <Card style={{ width: '18rem', borderRadius: '30px', }}>
+              {kids.image ? (
+                <Card.Img
+                  variant="top"
+                  style={{ height: '20rem' }}
+                  src={kids.image}
+                />
+              ) : null}
+              <Card.Body>
+                <Card.Title>{kids.name}</Card.Title>
+                <Link className="btn btn-primary m-2" to={`/${kids.id}/`}>
+                  View
+                </Link>
+              </Card.Body>
+            </Card>
+          ))}
+        </section>
       </div>
     );
 }
