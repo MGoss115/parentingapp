@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import dj_database_url
 from pathlib import Path
 import os
 from datetime import timedelta
@@ -22,12 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2)e)z*a1mo9=3iqdh_269x#!tla&fl)!b&6leg8l87op3+dlzd'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.environ['MODE'] == 'dev' else False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -62,9 +63,10 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -102,19 +104,23 @@ JWT_AUTH = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'parenting',
-        'USER': 'parentinguser',
-        'PASSWORD': 'parenting',
-        'HOST': 'localhost'
-    }
+
+    'default': dj_database_url.config(conn_max_age=600)
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'parenting',
+    #     'USER': 'parentinguser',
+    #     'PASSWORD': 'parenting',
+    #     'HOST': 'localhost'
+    # }
 }
 
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
-    'https://localhost:3000',
-    ]
+# CORS_ORIGIN_WHITELIST = [
+#     'http://localhost:3000',
+#     'https://localhost:3000',
+#     ]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 
@@ -157,6 +163,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = "/media/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type

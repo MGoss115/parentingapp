@@ -11,6 +11,9 @@ djangorestframework = "*"
 django-rest-knox = "*"
 djangorestframework-jwt = "*"
 django-cors-headers = "*"
+whitenoise = "*"
+dj-database-url = "*"
+gunicorn = "*"
 
 [dev-packages]
 autopep8 = "*"
