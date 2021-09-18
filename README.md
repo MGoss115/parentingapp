@@ -1,6 +1,6 @@
 # PARENTING APP 3.0
 ******
-![Landing Page](image/WireFrame4.jpeg)
+![Landing Page](image/WireFrame4.jpg)
 
 ## Parenting App
 ********************
