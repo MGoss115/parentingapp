@@ -1,6 +1,6 @@
 # PARENTING APP 3.0
 ******
-![Landing Page](image/WireFrame4.jpg)
+![Landing Page](https://github.com/MGoss115/parentingapp/blob/main/parenting_django/image/WireFrame4.jpeg)
 
 ## Parenting App
 ********************
